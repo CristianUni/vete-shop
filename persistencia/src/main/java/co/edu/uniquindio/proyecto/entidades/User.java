@@ -24,5 +24,7 @@ public class User extends Person implements Serializable {
     @Column(name = "id_user")
     private Integer id;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user",cascade = CascadeType.ALL)
+    List<Chat> chats;
 
 }

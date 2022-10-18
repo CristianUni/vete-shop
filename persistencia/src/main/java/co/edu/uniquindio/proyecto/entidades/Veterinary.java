@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.List;
 
 //Entidad hijo veterinario
 @Entity
@@ -27,4 +28,7 @@ public class Veterinary extends Person implements Serializable {
     @Length(min = 5, max = 13, message = "La tarjeta profesional debe tener mínimo 5 caracteres y máximo 13")
     @NotBlank(message = "El campo está vacío, debe ingresar la tarjeta profesional")
     private String num_license;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "veterinary",cascade = CascadeType.ALL)
+    List<Chat> chats;
 }
