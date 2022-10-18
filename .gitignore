@@ -1,4 +1,3 @@
-target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -9,3 +8,16 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+#Archivos compilados
+*.class
+
+#Archivos temporales de Maven
+/**/target/
+
+#Archivos de Intellij
+*.iml
+/.idea
+
+#Ignora archis del sistema Mac
+.DS_store
+/persistencia/target/
