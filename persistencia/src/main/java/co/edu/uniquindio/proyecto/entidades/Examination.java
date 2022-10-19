@@ -15,7 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class examination implements Serializable {
+public class Examination implements Serializable {
 
 
     //llave primaria examen

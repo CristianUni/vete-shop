@@ -47,7 +47,8 @@ public class Pet implements Serializable {
     @JoinColumn(name = "id_pet")
     private Pet pet;
 
-
-
+    //lista examenes
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "petExaminations",cascade = CascadeType.ALL)
+    private List<Examination>examinations;
 
 }
