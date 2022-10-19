@@ -34,6 +34,9 @@ public class TypePet implements Serializable {
 
     //lista mascotas
     @OneToMany(fetch =FetchType.LAZY,mappedBy ="pet",cascade = CascadeType.ALL )
-    List<Pet>pets;
+    private List<Pet>pets;
 
+    //lista razas
+    @OneToMany(fetch =FetchType.LAZY,mappedBy ="typePet",cascade = CascadeType.ALL)
+    private List<Breed>breeds;
 }
