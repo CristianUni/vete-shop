@@ -31,5 +31,5 @@ public class Veterinary extends Person implements Serializable {
     private String num_license;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "veterinary",cascade = CascadeType.ALL)
-    List<Chat> chats;
+    private List<Chat> chats;
 }

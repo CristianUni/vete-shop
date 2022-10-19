@@ -25,11 +25,12 @@ public class User extends Person implements Serializable {
     @Column(name = "id_user")
     private Integer id;
 
+    //lista de chats
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user",cascade = CascadeType.ALL)
-    List<Chat> chats;
+    private List<Chat> chats;
 
-
+    //lista mascotas
     @OneToMany(fetch =FetchType.LAZY,mappedBy ="user",cascade = CascadeType.ALL )
-    List<Pet>pets;
+    private List<Pet>pets;
 
 }
