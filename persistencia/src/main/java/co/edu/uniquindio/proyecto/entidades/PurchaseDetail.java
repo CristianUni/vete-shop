@@ -13,8 +13,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class PurchaseDetail implements Serializable {
-
+public class PurchaseDetail implements Serializable
+{
     //Llave primaria de la entidad
     @Id
     @EqualsAndHashCode.Include
@@ -22,6 +22,7 @@ public class PurchaseDetail implements Serializable {
     @Column(name = "id_purchase_detail")
     private Integer id;
 
+    //Atributo cantidad de productos comprados
     @Column(name = "units", nullable = false)
     private Integer units;
 
@@ -30,9 +31,15 @@ public class PurchaseDetail implements Serializable {
     @Positive(message = "El precio debe ser positivo")
     private double price;
 
-    //relaciones
+    //Relaciones
 
+    //id de la compra
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "purchase",nullable = true)
+    @JoinColumn(name = "id_purchase")
     private Purchase purchase;
+
+    //id del producto
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_product")
+    private Product product;
 }

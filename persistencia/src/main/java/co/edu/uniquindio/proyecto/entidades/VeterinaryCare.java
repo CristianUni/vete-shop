@@ -13,8 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class VeterinaryCare implements Serializable {
-
+public class VeterinaryCare implements Serializable
+{
     //Atributo id atencion veterinaria
     @Id
     @EqualsAndHashCode.Include
@@ -22,8 +22,13 @@ public class VeterinaryCare implements Serializable {
     @Column(name = "id_veterinary_care")
     private Integer id_veterinary_care;
 
+    //Relaciones
+
     //Lista examenes
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "veterinaryCare",cascade = CascadeType.ALL)
-    private List<Examination>examinations;
+    private List<Examination> examinations;
 
+    //id de la cita
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "veterinaryCare",cascade = CascadeType.ALL)
+    private Consultation consultations;
 }

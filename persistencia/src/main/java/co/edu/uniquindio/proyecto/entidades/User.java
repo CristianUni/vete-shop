@@ -15,9 +15,8 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @ToString(callSuper = true)
-
-public class User extends Person implements Serializable {
-
+public class User extends Person implements Serializable
+{
     //Llave primaria de la entidad
     @Id
     @EqualsAndHashCode.Include
@@ -25,12 +24,17 @@ public class User extends Person implements Serializable {
     @Column(name = "id_user")
     private Integer id;
 
+    //Pelaciones
+
     //lista de chats
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user",cascade = CascadeType.ALL)
     private List<Chat> chats;
 
     //lista mascotas
-    @OneToMany(fetch =FetchType.LAZY,mappedBy ="user",cascade = CascadeType.ALL )
-    private List<Pet>pets;
+    @OneToMany(fetch =FetchType.LAZY,mappedBy = "user",cascade = CascadeType.ALL )
+    private List<Pet> pets;
 
+    //lista de productos
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user",cascade = CascadeType.ALL )
+    private List<User> users;
 }

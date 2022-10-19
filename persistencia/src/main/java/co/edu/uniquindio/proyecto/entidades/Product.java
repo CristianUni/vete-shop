@@ -9,16 +9,16 @@ import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.util.List;
 
-@Getter
 @Entity
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@MappedSuperclass
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Product implements Serializable {
-
+public class Product implements Serializable
+{
+    //Llave primaria de la entidad
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,10 +47,17 @@ public class Product implements Serializable {
     @Positive(message = "El precio debe ser positivo")
     private double price;
 
+    //Relaciones
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product",cascade = CascadeType.ALL)
-    List<ProductImage> images;
+    //lista de detalles compra
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = CascadeType.ALL )
+    List<PurchaseDetail> purchaseDetails;
 
+    //lista de imagenes
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product",cascade = CascadeType.ALL)
-    List<ProductCategory> categories;
+    List<ProductImage> productImages;
+
+    //lista de categorias
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product",cascade = CascadeType.ALL)
+    List<ProductCategory> productCategories;
 }

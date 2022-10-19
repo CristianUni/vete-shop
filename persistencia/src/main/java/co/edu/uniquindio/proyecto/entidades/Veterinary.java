@@ -15,8 +15,8 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @ToString(callSuper = true)
-public class Veterinary extends Person implements Serializable {
-
+public class Veterinary extends Person implements Serializable
+{
     //Llave primaria de la entidad
     @Id
     @EqualsAndHashCode.Include
@@ -30,6 +30,13 @@ public class Veterinary extends Person implements Serializable {
     @NotBlank(message = "El campo está vacío, debe ingresar la tarjeta profesional")
     private String num_license;
 
+    //Relaciones
+
+    //lista de chats
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "veterinary",cascade = CascadeType.ALL)
     private List<Chat> chats;
+
+    //lista consultas
+    @OneToMany(fetch =FetchType.LAZY,mappedBy = "veterinary",cascade = CascadeType.ALL )
+    private List<Consultation> consultations;
 }

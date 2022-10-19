@@ -22,12 +22,14 @@ public class Chat implements Serializable
     @Column(name = "id_chat")
     private Integer id;
 
-    //Atributo usuario
+    //Relaciones
+
+    //Atributo id del usuario
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
     private User user;
 
-    //Atributo veterinario
+    //Atributo id del veterinario
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_veterinary")
     private Veterinary veterinary;

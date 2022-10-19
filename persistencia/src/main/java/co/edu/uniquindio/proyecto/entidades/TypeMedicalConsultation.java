@@ -15,24 +15,22 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Category implements Serializable
+public class TypeMedicalConsultation implements Serializable
 {
-    //Atributo id mascota
+    //Llave primaria de la entidad
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_category")
+    @Column(name = "id_type_consultation")
     private Integer id;
 
-    //Atributo Descripcion de la categoria
+    //Atributo tipo de cita
     @Column(nullable = false,length = 45)
-    @Length(min = 6, max = 45, message = "La descripcio de la categoria debe tener minimo 6 caracteres")
-    @NotBlank(message = "El campo está vacío, debe ingresar una descripcion")
+    @Length(min = 1, max = 45, message = "El tipo debe tener mínimo 1 caracteres y máximo 500")
+    @NotBlank(message = "El campo está vacío, ingresar un tipo de cita")
     private String description;
 
-    //Relaciones
-
-    //lista de categorias producto
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category",cascade = CascadeType.ALL)
-    List<ProductCategory> productCategories;
+    //lista citas
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "typeMedicalConsultation",cascade = CascadeType.ALL)
+    private List<Consultation> consultations;
 }

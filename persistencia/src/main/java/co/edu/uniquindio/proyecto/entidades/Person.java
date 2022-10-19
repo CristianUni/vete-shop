@@ -17,9 +17,8 @@ import java.time.LocalDateTime;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @MappedSuperclass
 @ToString
-public class Person implements Serializable {
-
-
+public class Person implements Serializable
+{
     //Atributo nombre de la persona
     @Column(nullable = false,length = 80)
     @Length(min = 2, max = 80, message = "El nombre debe tener mínimo 2 caracteres y máximo 80")

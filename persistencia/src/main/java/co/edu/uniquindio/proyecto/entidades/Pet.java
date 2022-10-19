@@ -17,8 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Pet implements Serializable {
-
+public class Pet implements Serializable
+{
     //Atributo id mascota
     @Id
     @EqualsAndHashCode.Include
@@ -36,21 +36,23 @@ public class Pet implements Serializable {
     @Column(nullable = false)
     private LocalDate birthdate;
 
+    //Relaciones
 
-    //Atributo usuario
+    //Atributo id del usuario
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "id_user")
     private User user;
 
-    //Atributo mascota
+    //Atributo id de la mascota
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "type_pet")
+    @JoinColumn(name = "id_type_pet")
     private TypePet typePet;
 
-    //lista examenes
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "petExaminations",cascade = CascadeType.ALL)
-    private List<Examination>examinations;
+    //lista de examenes
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pet",cascade = CascadeType.ALL)
+    private List<Examination> examinations;
 
-
-
+    //lista de citas
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pet",cascade = CascadeType.ALL)
+    private List<Consultation> consultations;
 }

@@ -12,12 +12,10 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@MappedSuperclass
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-
-public class ProductImage implements Serializable {
-
+public class ProductImage implements Serializable
+{
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,14 +23,14 @@ public class ProductImage implements Serializable {
     private Integer id;
 
     //Atributo Link de la imagen
-    @Column(nullable = false,length = 80)
-    @Length(min = 10, max = 300, message = "El link debe tener minimo 10 caracteres")
+    @Column(nullable = false,length = 150)
+    @Length(min = 10, max = 150, message = "El link debe tener minimo 150 caracteres")
     @NotBlank(message = "El campo está vacío, debe ingresar una imagen del producto")
-    private String nameProducts;
+    private String url;
+
+    //Relaciones
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_product")
-    Product product;
-
-
+    private Product product;
 }

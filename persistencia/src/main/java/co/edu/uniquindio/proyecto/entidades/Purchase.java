@@ -17,8 +17,8 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Purchase implements Serializable {
-
+public class Purchase implements Serializable
+{
     //Llave primaria de la entidad
     @Id
     @EqualsAndHashCode.Include
@@ -36,6 +36,13 @@ public class Purchase implements Serializable {
     private String paymentMethod;
 
     //Relaciones
+
+    //id del usuario
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_user")
+    private User user;
+
+    //lista de detalles compra
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "purchase",cascade = CascadeType.ALL)
-    List<PurchaseDetail> purchaseDetails;
+    private List<PurchaseDetail> purchaseDetails;
 }
