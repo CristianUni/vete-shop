@@ -24,7 +24,7 @@ public class Pet implements Serializable {
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pet")
-    private Integer id_mascota;
+    private Integer id;
 
     //Atributo nombre mascota
     @Column(nullable = false,length = 80)
@@ -34,21 +34,23 @@ public class Pet implements Serializable {
 
     //Atributo nacimiento mascota
     @Column(nullable = false)
-    private LocalDate birth_date;
+    private LocalDate birthdate;
 
 
     //Atributo usuario
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "user")
     private User user;
 
     //Atributo mascota
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_pet")
-    private Pet pet;
+    @JoinColumn(name = "type_pet")
+    private TypePet typePet;
 
     //lista examenes
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "petExaminations",cascade = CascadeType.ALL)
     private List<Examination>examinations;
+
+
 
 }

@@ -22,8 +22,8 @@ public class TypePet implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_tipo_mascota")
-    private Integer pet_type_id;
+    @Column(name = "id_type_pet")
+    private Integer id;
 
 
     //Atributo descripcion
@@ -33,7 +33,7 @@ public class TypePet implements Serializable {
     private String descripcion;
 
     //lista mascotas
-    @OneToMany(fetch =FetchType.LAZY,mappedBy ="pet",cascade = CascadeType.ALL )
+    @OneToMany(fetch =FetchType.LAZY,mappedBy ="typePet",cascade = CascadeType.ALL )
     private List<Pet>pets;
 
     //lista razas

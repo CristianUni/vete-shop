@@ -46,5 +46,9 @@ public class Examination implements Serializable {
     @NotBlank(message = "El campo está vacío, debe ingresar los resultados")
     private String results;
 
+    //Atributo atencion veterinario
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_veterinary_care")
+    private VeterinaryCare veterinaryCare;
 
 }

@@ -35,7 +35,7 @@ public class Breed implements Serializable {
 
     //Atributo tipo mascota
     @ManyToOne(fetch =FetchType.LAZY)
-    @JoinColumn(name = "id_typePet")
+    @JoinColumn(name = "id_typepet")
     private TypePet typePet;
 
 }
