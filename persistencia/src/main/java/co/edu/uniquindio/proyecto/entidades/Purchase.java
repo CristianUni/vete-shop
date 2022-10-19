@@ -35,6 +35,7 @@ public class Purchase implements Serializable {
     @NotBlank(message = "El campo está vacío, debe ingresar un medio de pago valido")
     private String paymentMethod;
 
+    //Relaciones
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "purchase",cascade = CascadeType.ALL)
     List<PurchaseDetail> purchaseDetails;
 }

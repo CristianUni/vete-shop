@@ -33,5 +33,6 @@ public class PurchaseDetail implements Serializable {
     //relaciones
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "purchase",nullable = true)
     private Purchase purchase;
 }
