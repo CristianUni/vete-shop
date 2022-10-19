@@ -34,7 +34,7 @@ public class User extends Person implements Serializable
     @OneToMany(fetch =FetchType.LAZY,mappedBy = "user",cascade = CascadeType.ALL )
     private List<Pet> pets;
 
-    //lista de productos
+    //lista de compras
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "user",cascade = CascadeType.ALL )
-    private List<User> users;
+    private List<Purchase> purchases;
 }
