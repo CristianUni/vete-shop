@@ -18,7 +18,7 @@ import java.io.Serializable;
 public class Breed implements Serializable {
 
 
-    //Llave primaria
+    //Llave primaria raza
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)

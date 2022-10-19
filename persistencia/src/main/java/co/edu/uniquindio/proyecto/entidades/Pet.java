@@ -40,12 +40,13 @@ public class Pet implements Serializable {
     //Atributo usuario
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
-    User user;
+    private User user;
 
     //Atributo mascota
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_pet")
-    Pet pet;
+    private Pet pet;
+
 
 
 
