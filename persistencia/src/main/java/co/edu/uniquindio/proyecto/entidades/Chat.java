@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,9 +27,12 @@ public class Chat implements Serializable
     @JoinColumn(name = "id_user")
     private User user;
 
-
     //Atributo veterinario
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_veterinary")
     private Veterinary veterinary;
+
+    //lista de mensajes
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "chat",cascade = CascadeType.ALL)
+    private List<Message> messages;
 }
