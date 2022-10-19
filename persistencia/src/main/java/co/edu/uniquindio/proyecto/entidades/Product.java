@@ -3,23 +3,27 @@ package co.edu.uniquindio.proyecto.entidades;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Column;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
+import java.io.Serializable;
+import java.util.List;
 
 @Getter
+@Entity
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @MappedSuperclass
 @ToString
-public class Product {
+public class Product implements Serializable {
+
+    @Id
+    @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_product")
+    private Integer id;
 
     //Atributo nombre del prodcuto
     @Column(nullable = false,length = 80)
@@ -41,8 +45,12 @@ public class Product {
     //Atributo precio del producto en el instante actual
     @Column(nullable = false, precision = 9, scale = 2)
     @Positive(message = "El precio debe ser positivo")
-    private double precio;
+    private double price;
 
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product",cascade = CascadeType.ALL)
+    List<ProductImage> images;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product",cascade = CascadeType.ALL)
+    List<ProductCategory> categories;
 }
