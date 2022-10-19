@@ -24,4 +24,8 @@ public class ProductCategory implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_product")
     Product product;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_category")
+    Category category;
 }
