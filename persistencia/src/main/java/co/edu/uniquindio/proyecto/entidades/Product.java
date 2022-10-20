@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -19,6 +20,14 @@ import java.util.List;
 public class Product implements Serializable
 {
     //Llave primaria de la entidad
+
+    public Product(String nameProduct, String description, Integer quantityProduct, double price) {
+        this.nameProduct = nameProduct;
+        this.description = description;
+        this.quantityProduct = quantityProduct;
+        this.price = price;
+    }
+
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +41,7 @@ public class Product implements Serializable
     private String nameProduct;
 
     //Atributo Descripcion de producto
-    @Column(nullable = false,length = 80)
+    @Column(nullable = false,length = 400)
     @Length(min = 6, max = 400, message = "La descripcio del producto debe tener minimo 6 caracteres")
     @NotBlank(message = "El campo está vacío, debe ingresar una descripcion")
     private String description;
@@ -53,11 +62,17 @@ public class Product implements Serializable
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = CascadeType.ALL )
     List<PurchaseDetail> purchaseDetails;
 
+
     //lista de imagenes
+    @JsonIgnore
+    @ToString.Exclude
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product",cascade = CascadeType.ALL)
     List<ProductImage> productImages;
 
     //lista de categorias
+    @JsonIgnore
+    @ToString.Exclude
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product",cascade = CascadeType.ALL)
     List<ProductCategory> productCategories;
+
 }

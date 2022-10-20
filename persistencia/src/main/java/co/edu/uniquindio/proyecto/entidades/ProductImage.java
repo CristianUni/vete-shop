@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -16,6 +17,11 @@ import java.io.Serializable;
 @ToString
 public class ProductImage implements Serializable
 {
+    public ProductImage(String url, Product product) {
+        this.url = url;
+        this.product = product;
+    }
+
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +36,8 @@ public class ProductImage implements Serializable
 
     //Relaciones
 
+    @ToString.Exclude
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_product")
     private Product product;
