@@ -19,12 +19,12 @@ public class UserRestController {
     }
 
 
-    @GetMapping("/users")
+    @GetMapping("/user")
     public List<User> getUsers() {
         return (List<User>) userRepo.findAll();
     }
 
-    @PostMapping("/users")
+    @PostMapping("/user")
     void addUser(@RequestBody User user) {
         userRepo.save(user);
     }
