@@ -29,7 +29,7 @@ public class Product implements Serializable
     @Column(nullable = false,length = 80)
     @Length(min = 4, max = 80, message = "El nombre del producto debe tener mínimo 4 caracteres y máximo 80")
     @NotBlank(message = "El campo está vacío, debe ingresar un nombre del producto")
-    private String nameProducts;
+    private String nameProduct;
 
     //Atributo Descripcion de producto
     @Column(nullable = false,length = 80)

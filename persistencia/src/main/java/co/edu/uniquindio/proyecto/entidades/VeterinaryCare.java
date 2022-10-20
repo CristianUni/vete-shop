@@ -39,4 +39,14 @@ public class VeterinaryCare implements Serializable
     //id de la cita
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "veterinaryCare",cascade = CascadeType.ALL)
     private Consultation consultations;
+
+    //Atributo id de la mascota
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_pet")
+    private Pet pet;
+
+    //Atributo id del veterinario
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_veterinary")
+    private Veterinary veterinary;
 }

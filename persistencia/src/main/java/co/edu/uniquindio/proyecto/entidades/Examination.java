@@ -49,8 +49,4 @@ public class Examination implements Serializable
     @JoinColumn(name = "id_veterinary_care")
     private VeterinaryCare veterinaryCare;
 
-    //Atributo id de la mascota
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_pet")
-    private Pet pet;
 }

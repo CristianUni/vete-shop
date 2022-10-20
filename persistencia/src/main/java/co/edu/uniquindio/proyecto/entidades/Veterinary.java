@@ -12,7 +12,6 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @ToString(callSuper = true)
 public class Veterinary extends Person implements Serializable
@@ -39,4 +38,8 @@ public class Veterinary extends Person implements Serializable
     //lista consultas
     @OneToMany(fetch =FetchType.LAZY,mappedBy = "veterinary",cascade = CascadeType.ALL )
     private List<Consultation> consultations;
+
+    //lista atenciones
+    @OneToMany(fetch =FetchType.LAZY,mappedBy = "veterinary",cascade = CascadeType.ALL )
+    private List<VeterinaryCare> veterinaryCares;
 }

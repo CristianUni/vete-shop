@@ -10,8 +10,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@MappedSuperclass
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
 public class ProductCategory implements Serializable {
 
