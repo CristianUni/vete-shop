@@ -6,13 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository
 
-public interface UserRepo extends JpaRepository<User,Integer> {
-
-    @Query("select p from User u join Pet p on u.id=p.user.id where u.id=:id")
+public interface UserRepo extends JpaRepository<User,Integer>
+{
+    @Query("select p from Pet p where p.user.id=:id")
     Optional<Pet> getPetByIDUser(int id);
 }

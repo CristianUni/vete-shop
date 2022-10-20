@@ -36,6 +36,14 @@ public class Pet implements Serializable
     @Column(nullable = false)
     private LocalDate birthdate;
 
+    //condicion de la mascota (hospitalizada o no hospitalizada)
+    @Column(name = "condition", nullable = false)
+    private Integer condition;
+
+    //Sexo de la mascota (macho, hembra, no especificado)
+    @Column(name = "sex", nullable = false)
+    private Integer sex;
+
     //Relaciones
 
     //Atributo id del usuario

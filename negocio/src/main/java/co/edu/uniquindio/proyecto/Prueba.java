@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import repositorio.UserRepo;
 @Component
-public class Prueba {
+public class Prueba
+{
     @Autowired
     UserServiceImpl userServiceImp;
-
 }
