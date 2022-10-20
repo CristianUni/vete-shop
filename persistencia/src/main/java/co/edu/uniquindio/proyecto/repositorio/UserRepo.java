@@ -1,4 +1,4 @@
-package repositorio;
+package co.edu.uniquindio.proyecto.repositorio;
 
 import co.edu.uniquindio.proyecto.entidades.Pet;
 import co.edu.uniquindio.proyecto.entidades.User;

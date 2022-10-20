@@ -2,7 +2,7 @@ package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.Pet;
 import org.springframework.stereotype.Service;
-import repositorio.UserRepo;
+import co.edu.uniquindio.proyecto.repositorio.UserRepo;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,10 +12,10 @@ public class UserServiceImpl implements UserService
 {
 private final UserRepo userRepo;
 
-    public UserServiceImpl(UserRepo userRepo) {
+    public UserServiceImpl(UserRepo userRepo)
+    {
         this.userRepo = userRepo;
     }
-
 
     @Override
     public List<Pet> getPetByIDUser(int id)
@@ -23,7 +23,6 @@ private final UserRepo userRepo;
         Optional<Pet> listPet = userRepo.getPetByIDUser(id);
         if(listPet.isPresent())
         {
-
             return listPet.stream().collect(Collectors.toList());
         }
         else
