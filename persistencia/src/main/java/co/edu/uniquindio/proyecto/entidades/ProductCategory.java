@@ -10,26 +10,22 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 @ToString
-public class ProductCategory implements Serializable
-{
-    //Atributo id mascota
+public class ProductCategory implements Serializable {
+
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_product_category")
     private Integer id;
 
-    //Relaciones
-
-    //id del producto
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_product")
-    Product product;
+    private Product product;
 
-    //id de la categoria
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_category")
-    Category category;
+    private Category category;
 }
