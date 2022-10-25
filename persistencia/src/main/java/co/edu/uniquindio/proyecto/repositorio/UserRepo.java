@@ -15,6 +15,9 @@ public interface UserRepo extends JpaRepository<User,Integer>
     @Query("select p from Pet p where p.user.id=:id")
     Optional<Pet> getPetByIDUser(int id);
 
-
+    @Query("select u from User u where u.email=:email")
     Optional<User> findByEmail(String email);
+
+
+
 }
