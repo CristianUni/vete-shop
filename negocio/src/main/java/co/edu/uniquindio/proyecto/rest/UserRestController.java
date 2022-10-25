@@ -33,9 +33,9 @@ public class UserRestController {
     private VeterinaryService veterinaryService;
 
     @PostMapping("/user")
-    public ResponseEntity saveUser(@RequestBody UserDTO user) throws Exception {
+    public ResponseEntity saveUser(@RequestBody Person user) throws Exception {
         try {
-            User u= userService.createUser(new User(user.getName(), user.getPhoneNumber(), user.getIdentification(), user.getEmail(),"",user.getSex(), Hash.factory().toSha1(user.getPassword()), LocalDateTime.now()));
+            User u = userService.createUser(new User(user.getName(), user.getPhoneNumber(), user.getIdentification(), user.getEmail(),"",user.getSex(), Hash.factory().toSha1(user.getPassword()), LocalDateTime.now()));
             ResponseCookie springCookie = Cookies.factory().setCookieUser(Hash.factory().toSha1(u.getId().toString()));
             return ResponseEntity.status(HttpStatus.CREATED).header(HttpHeaders.SET_COOKIE, springCookie.toString()).build();
         }catch (Exception e) {
