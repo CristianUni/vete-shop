@@ -20,11 +20,7 @@ public class VeterinaryServiceImpl implements VeterinaryService {
 
     @Override
     public Veterinary createVeterinary(Veterinary veterinary) throws Exception {
-        Optional<Veterinary> buscado = veterinaryRepo.findById(veterinary.getId());
-
-        if (buscado.isPresent()) throw new Exception("El codigo " + veterinary.getId() + " ya está registrado.");
-
-        buscado = veterinaryRepo.findByEmail(veterinary.getEmail());
+        Optional<Veterinary> buscado = veterinaryRepo.findByEmail(veterinary.getEmail());
 
         if (buscado.isPresent()) throw new Exception("El correo " + veterinary.getEmail() + " ya está registrado.");
 

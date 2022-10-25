@@ -28,11 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) throws Exception {
-        Optional<User> buscado = userRepo.findById(user.getId());
-
-        if (buscado.isPresent()) throw new Exception("El codigo " + user.getId() + " ya está registrado.");
-
-        buscado = userRepo.findByEmail(user.getEmail());
+        Optional<User> buscado = userRepo.findByEmail(user.getEmail());
 
         if (buscado.isPresent()) throw new Exception("El correo " + user.getEmail() + " ya está registrado.");
 
