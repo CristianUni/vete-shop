@@ -1,7 +1,9 @@
 package co.edu.uniquindio.proyecto.rest;
 
+import co.edu.uniquindio.proyecto.dto.UserDTO;
 import co.edu.uniquindio.proyecto.entidades.Person;
 import co.edu.uniquindio.proyecto.entidades.User;
+import co.edu.uniquindio.proyecto.segurity.Hash;
 import co.edu.uniquindio.proyecto.servicios.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import co.edu.uniquindio.proyecto.repositorio.UserRepo;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -22,15 +25,17 @@ public class UserRestController {
     private UserService userService;
 
     @PostMapping("/user")
-    public ResponseEntity<String> saveUser(@RequestBody Person p) throws Exception {
+    public ResponseEntity<String> saveUser(@RequestBody UserDTO user) throws Exception {
         try {
-            User u= userService.createUser(new User(p.getName(), p.getPhoneNumber(), p.getIdentification(), p.getEmail(),p.getPhoto_url(),p.getSex(),p.getPassword(),p.getCreationDate()));
+            User u= userService.createUser(new User(user.getName(), user.getPhoneNumber(), user.getIdentification(), user.getEmail(),"",user.getSex(), Hash.factory().toSha1(user.getPassword()), LocalDateTime.now()));
             return new ResponseEntity<String>(HttpStatus.CREATED);
         }catch (Exception e) {
             System.out.println(e);
             return new ResponseEntity<String>(HttpStatus.EXPECTATION_FAILED);
         }
     }
+
+
 }
 
 

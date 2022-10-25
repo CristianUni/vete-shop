@@ -45,7 +45,7 @@ public class Person implements Serializable
 
     //Atributo ruta de la foto de perfil
     @Column(nullable = true,length = 150)
-    private String photo_url;
+    private String photoUrl;
 
     @Column(name = "sex", nullable = false)
     private Integer sex;
