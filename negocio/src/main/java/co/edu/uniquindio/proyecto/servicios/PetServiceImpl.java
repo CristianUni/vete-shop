@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PerServiceImpl implements PetService{
+public class PetServiceImpl implements PetService{
 
     private final PetRepo petRepo;
 
-    public PerServiceImpl(PetRepo petRepo) {
+    public PetServiceImpl(PetRepo petRepo) {
         this.petRepo = petRepo;
     }
 

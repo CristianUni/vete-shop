@@ -40,24 +40,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(String correo) throws Exception {
+    public void deleteUser(String email) throws Exception {
 
-        Optional<User> buscado = userRepo.findByEmail(correo);
-         if (buscado.isEmpty()) throw new Exception("El usuario no existe");
+        Optional<User> buscado = userRepo.findByEmail(email);
+        if (buscado.isEmpty()) throw new Exception("El usuario no existe");
         userRepo.deleteById(buscado.get().getId());
 
 
     }
 
     @Override
-    public User findByEmail(String email)  {
+    public User findByEmail(String email) {
 
         Optional<User> buscado = userRepo.findByEmail(email);
-        if (buscado.isEmpty()){
+        if (buscado.isEmpty()) {
 
             return null;
 
-        };
+        }
+        ;
         return buscado.get();
     }
 
