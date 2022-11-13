@@ -44,6 +44,7 @@ public class UserRestController {
         }
     }
 
+    /*
     @GetMapping("/login")
     public ResponseEntity login(@RequestParam String email,@RequestParam String password){
         try {
@@ -67,7 +68,7 @@ public class UserRestController {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build();
         }
     }
-
+    */
     @GetMapping("/logout")
     public ResponseEntity logout(@CookieValue(name = "veterinary-id")String veterinaryId) {
         try {

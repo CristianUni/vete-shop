@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Calendar;
 import java.util.Optional;
 
 @Repository
@@ -18,6 +19,7 @@ public interface UserRepo extends JpaRepository<User,Integer>
     @Query("select u from User u where u.email=:email")
     Optional<User> findByEmail(String email);
 
-
+    @Query("select u from User u where u.name = ?1 and u.password = ?2")
+    User getByNameAndPassword(String name,String password);
 
 }

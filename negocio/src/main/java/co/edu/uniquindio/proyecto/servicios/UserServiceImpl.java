@@ -1,11 +1,14 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.entidades.Pet;
+import co.edu.uniquindio.proyecto.entidades.Token;
 import co.edu.uniquindio.proyecto.entidades.User;
 import org.springframework.stereotype.Service;
 import co.edu.uniquindio.proyecto.repositorio.UserRepo;
 
+import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -27,6 +30,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getByNameAndPassword(String name, String password) throws Exception {
+        User user = userRepo.getByNameAndPassword(name,password);
+
+        if (Objects.isNull(user)) throw new Exception("El usuario no existe");
+
+        return user;
+    }
+
+    @Override
     public User createUser(User user) throws Exception {
         Optional<User> buscado = userRepo.findByEmail(user.getEmail());
 
@@ -41,8 +53,6 @@ public class UserServiceImpl implements UserService {
         Optional<User> buscado = userRepo.findByEmail(email);
         if (buscado.isEmpty()) throw new Exception("El usuario no existe");
         userRepo.deleteById(buscado.get().getId());
-
-
     }
 
     @Override
@@ -54,7 +64,6 @@ public class UserServiceImpl implements UserService {
             return null;
 
         }
-        ;
         return buscado.get();
     }
 
