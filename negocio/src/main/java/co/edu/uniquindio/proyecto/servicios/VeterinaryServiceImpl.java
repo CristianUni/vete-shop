@@ -37,6 +37,15 @@ public class VeterinaryServiceImpl implements VeterinaryService {
     }
 
     @Override
+    public Veterinary findByEmailAndPassword(String email, String password){
+        Optional<Veterinary> vet = veterinaryRepo.findByEmailAndPassword(email,password);
+        if(vet.isEmpty()){
+            return null;
+        }
+        return vet.get();
+    }
+
+    @Override
     public Veterinary findByEmail(String email) {
         Optional<Veterinary> buscado = veterinaryRepo.findByEmail(email);
         if (buscado.isEmpty()) {
@@ -52,4 +61,5 @@ public class VeterinaryServiceImpl implements VeterinaryService {
     public List<Veterinary> listVeterinaries() {
         return veterinaryRepo.findAll();
     }
+
 }

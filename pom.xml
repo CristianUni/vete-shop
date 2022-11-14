@@ -19,11 +19,18 @@
     <groupId>co.edu.uniquindio</groupId>
     <artifactId>vete-shop</artifactId>
     <name>Vete-Shop</name>
-    <description>Este proyecto contiene los diferentes modulos para el backend y fronted de un aplicativo web para una veterinaria</description>
+    <description>
+        Este proyecto contiene los diferentes
+        modulos para el backend y fronted de un
+        aplicativo web para una veterinaria
+    </description>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <java.version>11</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <dependencies>
