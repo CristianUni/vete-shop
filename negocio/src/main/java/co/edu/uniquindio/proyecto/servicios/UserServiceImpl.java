@@ -30,8 +30,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getByNameAndPassword(String name, String password) throws Exception {
-        User user = userRepo.getByNameAndPassword(name,password);
+    public User getByEmailAndPassword(String email, String password) throws Exception {
+        User user = userRepo.getByEmailAndPassword(email,password);
 
         if (Objects.isNull(user)) throw new Exception("El usuario no existe");
 

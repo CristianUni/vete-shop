@@ -9,7 +9,7 @@ public interface UserService
 {
     List<Pet> getPetByIDUser(int id);
 
-    User getByNameAndPassword(String name, String password) throws Exception;
+    User getByEmailAndPassword(String name, String password) throws Exception;
 
     User createUser(User user) throws Exception;
 

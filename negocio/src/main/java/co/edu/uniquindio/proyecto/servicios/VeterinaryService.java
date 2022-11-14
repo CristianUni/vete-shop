@@ -7,9 +7,9 @@ public interface VeterinaryService {
 
     Veterinary createVeterinary(Veterinary veterinary) throws Exception;
     void deleteVeterinary(String email) throws Exception;
+
+    Veterinary findByEmailAndPassword(String email, String password);
+
     Veterinary findByEmail(String email);
     List<Veterinary>listVeterinaries();
-
-
-
 }

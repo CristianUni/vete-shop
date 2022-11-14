@@ -4,9 +4,9 @@ import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.validation.constraints.NotBlank;
 
 public class Credential {
-    @NotBlank(message = "El nombre de usuario es obligatorio.")
-    @JsonbProperty("userName")
-    private String userName;
+    @NotBlank(message = "Correo obligatorio.")
+    @JsonbProperty("email")
+    private String email;
     @NotBlank(message = "La clave es obligatoria.")
     @JsonbProperty("password")
     private String password;
@@ -14,12 +14,12 @@ public class Credential {
     public Credential() {
     }
 
-    public String getUserName() {
-        return userName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -31,7 +31,7 @@ public class Credential {
     }
 
     public Credential(String userName, String password) {
-        this.userName = userName;
+        this.email = userName;
         this.password = password;
     }
 }

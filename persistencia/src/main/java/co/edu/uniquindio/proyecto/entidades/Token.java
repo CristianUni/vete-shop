@@ -9,55 +9,55 @@ import java.util.UUID;
 @Entity
 public class Token implements Serializable {
     @JsonbProperty("id")
-    @Id
     @Column(length = 50)
-    private String id;
+    private String token;
 
     @JsonbProperty("expirationDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar expirationDate;
 
+    @Id
     @JsonbProperty("userName")
     @Column(length = 50)
-    private String userName;
+    private String email;
 
-    private static final int TIME_LIVE_LIMIT = 5;
+    private static final int TIME_LIVE_LIMIT = 360;
 
     public Token() {
     }
 
-    public Token(String userName) {
-        this.userName = userName;
+    public Token(String email) {
+        this.email = email;
         expirationDate = Calendar.getInstance();
         expirationDate.add(Calendar.MINUTE,TIME_LIVE_LIMIT);
-        id = UUID.randomUUID().toString();
+        token = UUID.randomUUID().toString();
     }
 
     public Calendar getExpirationDate() {
         return expirationDate;
     }
 
-    public String getId() {
-        return id;
+    public String getToken() {
+        return token;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getEmail() {
+        return email;
     }
 
     public static Token of(String userName){
         return new Token(userName);
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public void setExpirationDate(Calendar expirationDate) {
         this.expirationDate = expirationDate;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
